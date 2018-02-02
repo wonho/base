@@ -16,7 +16,6 @@ import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
@@ -44,24 +43,31 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	
 	@Override
 	public void configureViewResolvers(ViewResolverRegistry registry) {
-	    TilesViewResolver viewResolver = new TilesViewResolver();
-	    registry.viewResolver(viewResolver);		
+//	    registry.viewResolver(viewResolver);
+//	    registry.tiles();
 	}
 	
 	@Bean
-	public ViewResolver getViewResolver() {
+	public ViewResolver getJspViewResolver() {
 		InternalResourceViewResolver internalResourceViewResolver = new InternalResourceViewResolver();
 		internalResourceViewResolver.setPrefix("/WEB-INF/views/");
 		internalResourceViewResolver.setSuffix(".jsp");
-		internalResourceViewResolver.setOrder(0);
+		internalResourceViewResolver.setOrder(2);
 		
 		return internalResourceViewResolver;
 	}
+
+    @Bean
+    public TilesViewResolver getTilesViewResolver() {
+        TilesViewResolver tilesViewResolver = new TilesViewResolver();
+        tilesViewResolver.setOrder(0);
+        return tilesViewResolver;
+    }	
 	
 	@Bean
 	public TilesConfigurer tilesConfigurer(){
 	    TilesConfigurer tilesConfigurer = new TilesConfigurer();
-	    tilesConfigurer.setDefinitions(new String[] {"/WEB-INF/views/**/tiles.xml"});
+	    tilesConfigurer.setDefinitions(new String[] {"/WEB-INF/views/tiles/def/tiles.xml"});
 	    tilesConfigurer.setCheckRefresh(true);
 	    return tilesConfigurer;
     }
@@ -111,5 +117,14 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 //	public void addInterceptors(InterceptorRegistry registry) {
 //		LoggerInceptor loggerInceptor = new LoggerInceptor();
 //		registry.addInterceptor(loggerInceptor);
+//	}
+	
+//	 public void addResourceHandlers(ResourceHandlerRegistry registry) {
+//	    registry.addResourceHandler("/css/**").addResourceLocations("/css/")
+//	            .setCacheControl(CacheControl.maxAge(10, TimeUnit.SECONDS).mustRevalidate());
+//	    registry.addResourceHandler("/lib/**").addResourceLocations("/lib/")
+//	            .setCacheControl(CacheControl.maxAge(10, TimeUnit.SECONDS).mustRevalidate());
+//	    registry.addResourceHandler("/web/**").addResourceLocations("/webroot/")
+//	            .setCacheControl(CacheControl.noStore());   //prevent cache
 //	}
 }

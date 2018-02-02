@@ -16,6 +16,14 @@ public class LoginController {
 
 	Logger logger = LoggerFactory.getLogger(LoginController.class);
 	
+	@RequestMapping(value="/")
+	public String index(@RequestParam Map<String,Object> paramMap) throws Exception {
+		
+		logger.debug("login : @RequestParam {}",paramMap);
+		
+		return "login/login";
+	}
+	
 	@RequestMapping(value="/login")
 	public String login(@RequestParam Map<String,Object> paramMap) throws Exception {
 		
@@ -74,7 +82,7 @@ public class LoginController {
 
 		logger.debug("credentials {} ",credentials);
 		
-		return "login/main";
+		return "home";
 		
 	}
 	

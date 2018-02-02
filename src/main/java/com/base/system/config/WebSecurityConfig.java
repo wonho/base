@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -26,7 +27,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //				.withUser("user").password("1111").roles("USER").and()
 //				.withUser("admin").password("2222").roles("USER", "ADMIN");
 //	}
-
+	
+	@Override
+	public void configure(WebSecurity web) throws Exception {
+		web.ignoring().antMatchers("static/**");
+	}
 	/**
 	 * 직접 userDetailService를 호출하지 않고 AuthenticationProvider를 연결 가능(DaoAuthenticationProvider)
 	 *  authProvider.setUserDetailsService,authProvider.setPasswordEncoder 
@@ -91,8 +96,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 		    .authorizeRequests()
-//		    .antMatchers("/login.do").permitAll()
-		    .antMatchers("/static/**").anonymous()
+		    .antMatchers("/").permitAll()
 		    .antMatchers("/**").hasRole("USER")
 		    .anyRequest().authenticated()
 			.and()
