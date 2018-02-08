@@ -52,9 +52,10 @@ public class LoginController {
 		return null;
 	}
 
-	
-//	@Autowired
-//	Melong melong;
+	@RequestMapping("/grid.do")
+	public String gridTest(@RequestParam Map<String,Object> paramMap) throws Exception {
+		return "testGrid";
+	}
 	
 	@RequestMapping("/main")
 	public String processMain(@RequestParam Map<String,Object> paramMap) throws Exception {
