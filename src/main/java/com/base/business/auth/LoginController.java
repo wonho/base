@@ -32,6 +32,12 @@ public class LoginController {
 		return "login/login";
 	}
 	
+	@RequestMapping(value="/facebook")
+	public String facebook(@RequestParam Map<String,Object> paramMap) throws Exception {
+		logger.debug("facebook : @RequestParam {}",paramMap);		
+		return null;
+	}	
+	
 	@RequestMapping("/logout")
 	public String logout(@RequestParam Map<String,Object> paramMap) throws Exception {
 		logger.debug("logout : @RequestParam {}",paramMap);
