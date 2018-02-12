@@ -21,9 +21,9 @@
    </definition>  
 
    <!-- Product Page -->
-   <definition name="products" extends="base-definition">  
-       <put-attribute name="title" value="Products" />  
-       <put-attribute name="body" value="/WEB-INF/views/pages/products.jsp" />  
+   <definition name="testGrid" extends="base-definition">  
+       <put-attribute name="title" value="TestGrid" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/testGrid.jsp" />  
    </definition>  
       
    <!-- Contact-us Page -->

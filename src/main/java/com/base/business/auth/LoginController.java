@@ -35,7 +35,7 @@ public class LoginController {
 	@RequestMapping(value="/facebook")
 	public String facebook(@RequestParam Map<String,Object> paramMap) throws Exception {
 		logger.debug("facebook : @RequestParam {}",paramMap);		
-		return null;
+		return "testGrid";
 	}	
 	
 	@RequestMapping("/logout")
@@ -52,7 +52,7 @@ public class LoginController {
 		return null;
 	}
 
-	@RequestMapping("/grid.do")
+	@RequestMapping("/grid")
 	public String gridTest(@RequestParam Map<String,Object> paramMap) throws Exception {
 		return "testGrid";
 	}
