@@ -3,7 +3,9 @@ package com.base.system.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
+import org.springframework.security.config.BeanIds;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -27,6 +29,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //				.withUser("user").password("1111").roles("USER").and()
 //				.withUser("admin").password("2222").roles("USER", "ADMIN");
 //	}
+	
+	/* AuthenticationManager가 자동으로 Autowired 않되어서 넣음 */
+    @Bean(name = BeanIds.AUTHENTICATION_MANAGER)
+	@Override
+	public AuthenticationManager authenticationManagerBean() throws Exception {
+	   return super.authenticationManagerBean();
+	}
+
 	
 	@Override
 	public void configure(WebSecurity web) throws Exception {
