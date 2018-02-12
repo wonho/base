@@ -10,6 +10,7 @@ import org.springframework.security.oauth2.config.annotation.configurers.ClientD
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
+import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 
 /*DispatcherServlet Mapping *.do로 해서 oauth/token을 못찾아서 캐 삽질함*/
@@ -40,6 +41,12 @@ public class JwtOAuth2AuthorizationServerConfiguration extends AuthorizationServ
 	        .authenticationManager(this.authenticationManager);
 	    }
 	    
+//	    @Override
+//	    public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
+//	    	security.tokenKeyAccess("isAnonymous() || hasAuthority('ROLE_TRUSTED_CLIENT')").checkTokenAccess(
+//	                "hasAuthority('ROLE_TRUSTED_CLIENT')");
+//	    }
+	    
 	    @Override
 	    public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 	      clients.inMemory()
@@ -49,7 +56,15 @@ public class JwtOAuth2AuthorizationServerConfiguration extends AuthorizationServ
 	        .scopes("read", "write")
 	        .resourceIds(resourceId)
 	        .accessTokenValiditySeconds(accessTokenValiditySeconds)
-	        .secret("foo");
+	        .secret("foo")
+	        .and()
+	        .withClient("melong")
+            .authorizedGrantTypes("client_credentials", "password")
+            .authorities("ROLE_USER")
+            .scopes("read")
+            .resourceIds(resourceId)
+            .accessTokenValiditySeconds(accessTokenValiditySeconds)
+            .secret("secret");
 	    }
 
 	    /* http://wonwoo.ml/index.php/post/980  참고*/

@@ -1,0 +1,13 @@
+curl -i -H "Accept: application/json" -X GET http://localhost:8080/base/sample
+
+curl -X POST --user 'bar:foo' -d 'grant_type=password&username=melong&password=1234' http://localhost:8080/base/oauth/token
+
+/* id/passwd로 할 경우에는 secret가 필요없음 */
+
+curl -u my-trusted-client: http://localhost:8080/oauth/token -d "grant_type=password&username=user&password=password" 
+
+curl -u bar:foo http://localhost:8080/oauth/token -d "grant_type=password&username=admin&password=test"
+
+curl -H "Authorization: Bearer $token" http://localhost:8080/simple
+
+curl -H "Accept: application/json" melong:secret@localhost:8080/base/oauth/token -d grant_type=client_credentials

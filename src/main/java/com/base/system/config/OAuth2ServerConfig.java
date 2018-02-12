@@ -13,12 +13,18 @@ public class OAuth2ServerConfig {
 	 @EnableResourceServer
 	 protected static class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
 
+		 /* token을 db에 저장할 경우 */
+		 // http://kimseunghyun76.tistory.com/404?category=583716
+//		 @Autowired
+//		 private TokenStore tokenStore;
+		 
 		 @Value("${resource.id:spring-boot-application}")
 		 private String resourceId;
 	
 		 @Override
 		 public void configure(ResourceServerSecurityConfigurer resources) {
 		    resources.resourceId(resourceId);
+//		    resources.tokenStore(tokenStore);
 		 }
 	
 		 @Override
