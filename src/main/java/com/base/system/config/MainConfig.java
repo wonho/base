@@ -10,7 +10,7 @@ import org.springframework.web.context.ConfigurableWebApplicationContext;
 
 @Configuration
 @Import(value= {CommonConfig.class, DatabaseConfig.class, InfrastructureConfig.class, 
-		        WebSecurityConfig.class,OAuth2ServerConfig.class, JwtOAuth2AuthorizationServerConfiguration.class})
+		        WebSecurityConfig.class,OAuth2ResourceServerConfig.class, JwtOAuth2AuthorizationServerConfiguration.class})
 public class MainConfig {
 
 	@Autowired

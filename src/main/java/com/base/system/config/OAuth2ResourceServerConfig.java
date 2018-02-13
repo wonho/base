@@ -8,7 +8,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
 
 @Configuration
-public class OAuth2ServerConfig {
+public class OAuth2ResourceServerConfig {
 	 @Configuration
 	 @EnableResourceServer
 	 protected static class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
