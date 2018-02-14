@@ -21,7 +21,7 @@ public class OAuthClientTest {
 	@Test
 	public void getSample() {
 
-	        final String result = restTemplate.getForObject("http://localhost:8080/base/sample2", String.class);
+	        final String result = restTemplate.getForObject("http://localhost:8080/base/sample", String.class);
 	        
 	        logger.debug("getAccessToken : {} ",restTemplate.getAccessToken());
 	        

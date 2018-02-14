@@ -38,7 +38,7 @@ public class OAuth2ResourceServerConfig {
 		 public void configure(HttpSecurity http) throws Exception {
 			 http.requestMatchers().antMatchers("/sample/**")
 			 .and().authorizeRequests()
-             .antMatchers("/sample/**").authenticated();
+             .antMatchers("/sample/**").hasRole("USER");
 		 }	
 	 }
 }

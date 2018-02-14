@@ -1,5 +1,7 @@
 package com.base.system.config;
 
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -10,6 +12,8 @@ import org.springframework.security.oauth2.config.annotation.configurers.ClientD
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
+import org.springframework.security.oauth2.provider.token.TokenStore;
+import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 
 /*DispatcherServlet Mapping *.do로 해서 oauth/token을 못찾아서 캐 삽질함*/
@@ -30,6 +34,14 @@ public class JwtOAuth2AuthorizationServerConfiguration extends AuthorizationServ
 
 	    @Value("${access_token.validity_period:3600}")
 	    private int accessTokenValiditySeconds = 3600;
+	    
+	    @Autowired
+	    DataSource dataSource;
+	    
+	    @Bean
+	    public TokenStore tokenStore() {
+	        return new JdbcTokenStore(dataSource);
+	    }
 
 	    @Override
 	    public void configure(AuthorizationServerEndpointsConfigurer endpoints)
@@ -37,6 +49,7 @@ public class JwtOAuth2AuthorizationServerConfiguration extends AuthorizationServ
 
 	      endpoints.accessTokenConverter(jwtAccessTokenConverter())
 	        .userDetailsService(userDetailsService)
+	        .tokenStore(tokenStore())
 	        .authenticationManager(this.authenticationManager);
 	    }
 	    
