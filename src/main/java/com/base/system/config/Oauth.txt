@@ -14,3 +14,5 @@ curl -H "Accept: application/json" melong:secret@localhost:8080/base/oauth/token
 
 
 https://github.com/making/oauth2-sso-demo
+
+https://stackoverflow.com/questions/44234159/using-websecurityconfigureradapter-with-spring-oauth2-and-user-info-uri

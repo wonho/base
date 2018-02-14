@@ -14,4 +14,9 @@ public class RestTestController {
 	  public String simple2(){
 	    return "hi spring boot";
 	  }
+	  
+	  @GetMapping("/sample2")
+	  public String simple3(){
+		  return "hi spring boot 2222222222222";
+	  }
 }

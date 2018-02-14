@@ -105,8 +105,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
+			.headers().frameOptions().disable()
+			.and()
 		    .authorizeRequests()
 		    .antMatchers("/").permitAll()
+		    .antMatchers("/console/**").permitAll() //h2 database
 		    .antMatchers("/**").hasRole("USER")
 		    .anyRequest().authenticated()
 			.and()
@@ -119,10 +122,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		        .passwordParameter("password")
 //		        .defaultSuccessUrl("/main.do")
 		        .failureUrl("/login.do")
-		        .and()
+		    .and()
 		    .logout()
-		        .and()
-		    .csrf().disable()
-		    .httpBasic();
+		    .and()
+		    .csrf().disable();
+//		    .httpBasic().disable();
+		
 	}
 }

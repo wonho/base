@@ -1,7 +1,3 @@
-create schema happyhouse AUTHORIZATION DBA;
-set schema happyhouse;
-SET DATABASE DEFAULT INITIAL SCHEMA happyhouse;
- 
 drop table tbl_user if exists;
  
 CREATE TABLE tbl_user (

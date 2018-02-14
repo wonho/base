@@ -18,8 +18,8 @@ public class DatabaseConfig {
 	@Bean
 	public DataSource dataSource() {
 		return new EmbeddedDatabaseBuilder()
-				   .setType(EmbeddedDatabaseType.HSQL)
-				   .addScript("classpath:jdbc/schema.sql")
+				   .setType(EmbeddedDatabaseType.H2)
+				   .addScript("classpath:jdbc/schema-h2.sql")
 				   .addScript("classpath:jdbc/data.sql")
 				   .build();
 	}

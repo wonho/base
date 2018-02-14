@@ -21,17 +21,17 @@ public class OAuthClientTest {
 	@Test
 	public void getSample() {
 
-	        final String result = restTemplate.getForObject("http://localhost:8080/base/sample", String.class);
+	        final String result = restTemplate.getForObject("http://localhost:8080/base/sample2", String.class);
 	        
 	        logger.debug("getAccessToken : {} ",restTemplate.getAccessToken());
 	        
 	        logger.debug("result : {}",result);
 
-	        final String result2 = restTemplate.getForObject("http://localhost:8080/base/sample", String.class);
-	        
-	        logger.debug("getAccessToken2 : {} ",restTemplate.getAccessToken());
-	        
-	        logger.debug("result2 : {}",result2);
+//	        final String result2 = restTemplate.getForObject("http://localhost:8080/base/sample", String.class);
+//	        
+//	        logger.debug("getAccessToken2 : {} ",restTemplate.getAccessToken());
+//	        
+//	        logger.debug("result2 : {}",result2);
 
 	        
 		

@@ -35,7 +35,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @EnableWebMvc
 @EnableScheduling
 public class WebConfig extends WebMvcConfigurerAdapter {
-	
+		 
 	@Override
 	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
 		configurer.enable();

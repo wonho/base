@@ -13,6 +13,7 @@ public class OAuth2ResourceServerConfig {
 	 @EnableResourceServer
 	 protected static class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
 
+		 // https://github.com/spring-projects/spring-security-oauth/issues/1024
 		 /* token을 db에 저장할 경우 */
 		 // http://kimseunghyun76.tistory.com/404?category=583716
 //		 @Autowired
@@ -27,10 +28,17 @@ public class OAuth2ResourceServerConfig {
 //		    resources.tokenStore(tokenStore);
 		 }
 	
+//		 @Override
+//		 public void configure(HttpSecurity http) throws Exception {
+//		      http.authorizeRequests()
+//		        .antMatchers("/sample/**").hasRole("USER");
+//		 }	
+		 
 		 @Override
 		 public void configure(HttpSecurity http) throws Exception {
-		      http.authorizeRequests()
-		        .antMatchers("/sample/**").hasRole("USER");
+			 http.requestMatchers().antMatchers("/sample/**")
+			 .and().authorizeRequests()
+             .antMatchers("/sample/**").authenticated();
 		 }	
 	 }
 }

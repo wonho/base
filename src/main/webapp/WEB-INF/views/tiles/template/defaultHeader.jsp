@@ -13,7 +13,7 @@
     console.log("click");
     
     var queryString = $(".form").serialize();
-    var url = './facebook.do';
+    var url = './facebook';
     console.log("query : " + queryString);
     console.log("url : " + url);
     
@@ -59,7 +59,7 @@
         <!--
         <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
         -->
-                  <li><a href="./facebook.do">Sign Up</a></li>
+                  <li><a href="./facebook">Sign Up</a></li>
                   <li class="dropdown">
                      <a href="http://www.jquery2dotnet.com" class="dropdown-toggle" data-toggle="dropdown">Sign in <b class="caret"></b></a>
                      <ul class="dropdown-menu" style="padding: 15px;min-width: 250px;">
