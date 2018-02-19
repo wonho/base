@@ -1,0 +1,17 @@
+https://www.google.co.kr/amp/blog.lukaspradel.com/user-role-permission-security-rbac-in-spring-security-4/amp/
+
+http://www.baeldung.com/role-and-privilege-for-spring-security-registration
+
+https://www.slipp.net/wiki/pages/viewpage.action?pageId=25527577
+
+http://wonwoo.ml/index.php/post/category/web/spring-boot/page/25
+
+https://dodo4513.github.io/2017/02/12/facebook_oauth/
+
+http://seongtak-yoon.tistory.com/23
+
+http://java.ihoney.pe.kr/271
+
+https://dodo4513.github.io/2017/02/12/facebook_oauth/
+
+http://clean-brain-textcube.blogspot.kr/2013/01/spring-and-mybatis-and-jqgrid-example.html
